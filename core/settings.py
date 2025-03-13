@@ -1,7 +1,12 @@
 
 # 標準ライブラリ
+from dotenv import load_dotenv
+import os
 from pathlib import Path
 
+
+# 環境変数の読み込み
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -61,16 +66,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# Database(MySQL)
+user_PASSWORD = os.getenv('user_PASSWORD')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ECommerce',                  # DB名
+        'USER': 'user',                       # ユーザ名
+        'PASSWORD': user_PASSWORD,            # パスワード
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'TEST': {
+            'NAME': 'TEST_DB'
+        },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
