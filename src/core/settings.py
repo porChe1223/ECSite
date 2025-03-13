@@ -1,6 +1,6 @@
 
 # 標準ライブラリ
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 import os
 from pathlib import Path
 
@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # shopアプリ
+    'shop'
 ]
 
 MIDDLEWARE = [
