@@ -1,0 +1,82 @@
+[
+  {
+    "model": "shop.Product",
+    "pk": 1,
+    "fields": {
+      "image": "cart.png",
+      "name": "アイロン",
+      "price": 10000.0,
+      "description": "非常に使いやすいアイロンです。"
+    }
+  },
+  {
+    "model": "shop.Product",
+    "pk": 2,
+    "fields": {
+      "image": "cart.png",
+      "name": "ブレンダー",
+      "price": 200.0,
+      "description": "様々なものをブレンドできます。"
+    }
+  },
+  {
+    "model": "shop.Product",
+    "pk": 3,
+    "fields": {
+      "image": "cart.png",
+      "name": "バッグ",
+      "price": 30000.0,
+      "description": "おしゃれなバッグです。"
+    }
+  },
+  {
+    "model": "shop.Product",
+    "pk": 4,
+    "fields": {
+      "image": "cart.png",
+      "name": "スマートフォン",
+      "price": 20000.0,
+      "description": "使いやすいスマートフォンです。"
+    }
+  },
+  {
+    "model": "shop.Product",
+    "pk": 5,
+    "fields": {
+      "image": "cart.png",
+      "name": "ソファ",
+      "price": 2600000.0,
+      "description": "上質な素材を使ったソファです。"
+    }
+  },
+  {
+    "model": "shop.Product",
+    "pk": 6,
+    "fields": {
+      "image": "cart.png",
+      "name": "チェア",
+      "price": 260000.0,
+      "description": "上質な素材を使ったチェアです。"
+    }
+  },
+  {
+    "model": "shop.Product",
+    "pk": 7,
+    "fields": {
+      "image": "cart.png",
+      "name": "腕時計",
+      "price": 76000.0,
+      "description": "おしゃれな腕時計です。"
+    }
+  },
+  {
+    "model": "shop.Product",
+    "pk": 8,
+    "fields": {
+      "image": "cart.png",
+      "name": "ディスプレイ",
+      "price": 6000.0,
+      "description": "リーズナブルなディスプレイです。"
+    }
+  }
+]

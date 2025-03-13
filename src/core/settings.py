@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # shopアプリ
-    'shop'
+    'shop.apps.ShopConfig'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,10 +117,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+# アップロード・格納されたファイル
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media_techpit/'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+# 静的ファイルフォルダ
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 
 # Default primary key field type
