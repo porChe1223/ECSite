@@ -16,7 +16,8 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description|truncatewords:20 }}</p>
                     <p class="card-text">価格: {{ product.price }}円</p>
-                    <a href="#" class="btn btn-primary">お気に入り</a>
+                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary">詳細を見る</a>
+                    <button class="btn btn-outline-danger">お気に入り</button>
                 </div>
             </div>
         </div>
