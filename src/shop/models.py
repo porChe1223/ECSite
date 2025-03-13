@@ -1,6 +1,7 @@
+# Django
 from django.db import models
 
-# 商品
+## 商品
 class Product(models.Model):
     # メタデータ（追加情報）
     class Meta:
@@ -9,7 +10,7 @@ class Product(models.Model):
     # 画像
     image = models.ImageField(
         verbose_name = '画像',
-        upload_to = "image/"
+        upload_to = 'image/'
     )
     # 名前
     name = models.CharField(

@@ -117,9 +117,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-# アップロード・格納されたファイル
+# アップロードされたファイル
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media_techpit/'
+MEDIA_URL = '/media/'
 
 # 静的ファイルフォルダ
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
