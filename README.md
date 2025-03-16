@@ -8,13 +8,17 @@
 - Shell コマンド  
   `python manage.py shell`
 
+- 管理者作成  
+  `python3 manage.py createsuperuser`
+
 ## DB（Ecommerce）
 
 MySQL を使用。
 
 ### コマンド
 
-- マイグレート  
+- マイグレーション  
+  `python3 manage.py makemigrations`  
   `python3 manage.py migrate`
 
 - 商品の追加  
@@ -22,12 +26,13 @@ MySQL を使用。
   `python3 manage.py loaddata <fixturesのJSONファイル名>`
 
 - ログイン  
-  `mysql -u root -p`  
-  または  
+  `mysql -u <ユーザ名> -p`  
+  または管理者権限でログイン  
   `sudo mysql -u root`
+
 - DB アクセス  
    mysql>  
-   `USE ECommerce;`
+   `USE <テーブル名>;`
 
 - テーブル一覧表示  
   mysql>  
@@ -38,16 +43,30 @@ MySQL を使用。
   `SHOW COLUMNS FROM <テーブル名>;`
 
 - テーブルデータ表示  
-   mysql>
+  mysql>  
   `SELECT * FROM <テーブル名>;`
+
+- DB 作成  
+  mysql>  
+  `CREATE DATABASE <DB名>;`
+
+- ユーザ作成  
+  mysql>  
+  `CREATE USER '<ユーザ名>'@'localhost' IDENTIFIED BY '<パスワード>';`  
+  `GRANT ALL ON <DB名>.\* TO '<ユーザ名>'@'localhost';`  
+  `FLUSH PRIVILEGES;`
+
+- テーブル削除  
+  mysql>  
+  `DROP DATABASE <テーブル名>;`
 
 - テーブルデータ削除（オートインクリメントもリセット）  
   mysql>  
-  `TRUNCATE TABLE shop_product;`
+  `TRUNCATE TABLE <テーブルカラム名>;`
 
 - テーブルデータ削除（オートインクリメントはそのまま）  
   mysql>  
-  `DELETE FROM shop_product;`
+  `DELETE FROM <テーブルカラム名>;`
 
 - 退出  
   mysql>  
