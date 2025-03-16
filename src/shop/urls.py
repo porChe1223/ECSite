@@ -9,5 +9,5 @@ from . import views
 
 urlpatterns = [
     path('', views.shop, name='shop'),
-    path('<int:pk>/', views.product_detail, name='product_detail'),
+    path('<int:pk>/', views.product_detail, name='shop/product_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
