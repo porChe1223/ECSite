@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 自作アプリ
-    'shop.apps.ShopConfig'        # shopアプリ
+    'shop.apps.ShopConfig',       # shopアプリ
     'account'                     # accountアプリ
 ]
 
@@ -75,7 +75,7 @@ user_PASSWORD = os.getenv('user_PASSWORD')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ECommerce',                  # DB名
+        'NAME': 'ECSite',                     # DB名
         'USER': 'user',                       # ユーザ名
         'PASSWORD': user_PASSWORD,            # パスワード
         'HOST': 'localhost',
@@ -103,6 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# 認証機能
+AUTH_USER_MODEL = "account.User" # カスタムユーザーを認証用ユーザーとして登録
 
 
 # Internationalization
