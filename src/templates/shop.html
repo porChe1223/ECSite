@@ -5,7 +5,11 @@
 {% block title %}ECサイト{% endblock %}
 
 {% block content %}
-<h3 class="mt-4">ようこそ</h3>
+{% if user.is_authenticated %}
+<h3 class="h2">ようこそ {{ user.first_name }} {{ user.last_name }} さん</h3>
+{% else %}
+<a href="{% url 'account:signup' %}" class="btn btn-primary">Signup</a>
+{% endif %}
 <div class="container mt-4">
     <div class="row">
         {% for product in products %}
