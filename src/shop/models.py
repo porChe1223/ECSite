@@ -1,8 +1,11 @@
 # Django
 from django.db import models
 
-## 商品
+
 class Product(models.Model):
+    """""""""""""""""""""""""""
+    商品に関する情報を扱うクラス
+    """""""""""""""""""""""""""
     # メタデータ（追加情報）
     class Meta:
         verbose_name = '商品'
@@ -27,3 +30,7 @@ class Product(models.Model):
     description = models.TextField(
         verbose_name = '説明'
     )
+
+    # 管理サイトで商品名確認
+    def __str__(self):
+        return self.name
