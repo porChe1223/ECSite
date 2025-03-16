@@ -1,5 +1,5 @@
 # Django
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 # Userモデル
 from .models import User
 
@@ -17,3 +17,11 @@ class SignUpForm(UserCreationForm):
             "last_name",
             "birth_date",
         )
+
+
+class LoginForm(AuthenticationForm):
+    """""""""""""""""
+    ログインフォーム
+    """""""""""""""""
+    class Meta:
+        model = User

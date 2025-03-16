@@ -107,6 +107,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # 認証機能
 AUTH_USER_MODEL = "account.User" # カスタムユーザーを認証用ユーザーとして登録
 
+# ログイン関連遷移ページ
+LOGIN_REDIRECT_URL = "account:shop"
+LOGOUT_REDIRECT_URL = "account:login"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
