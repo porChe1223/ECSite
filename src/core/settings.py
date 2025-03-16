@@ -33,8 +33,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # shopアプリ
-    'shop.apps.ShopConfig'
+    # 自作アプリ
+    'shop.apps.ShopConfig'        # shopアプリ
+    'account'                     # accountアプリ
 ]
 
 MIDDLEWARE = [
