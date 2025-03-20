@@ -57,55 +57,59 @@ class User(AbstractBaseUser, PermissionsMixin):
     """""""""""""""""""""
     ユーザ情報を扱うクラス
     """""""""""""""""""""
+    # メタデータ（全体情報）
+    class Meta:
+        verbose_name = 'ユーザー'
+        verbose_name_plural = 'ユーザー'
     # メールアドレス
     email = models.EmailField(
-        verbose_name=_("email"),
+        verbose_name=_("メールアドレス"),
         unique=True,
         null = False
     )
     # 姓
     first_name = models.CharField(
-        verbose_name=_("first_name"),
+        verbose_name=_("姓"),
         max_length=150,
         null=False,
         blank=False
     )
     # 名
     last_name = models.CharField(
-        verbose_name=_("last_name"),
+        verbose_name=_("名"),
         max_length=150,
         null=False,
         blank=False
     )
     # 誕生日
     birth_date = models.DateField(
-        verbose_name=_("birth_date"),
+        verbose_name=_("誕生日"),
         blank=True,
         null=False
     )
     # 管理者か否か
     is_superuser = models.BooleanField(
-        verbose_name=_("is_superuer"),
+        verbose_name=_("管理者権限"),
         default=False
     )
     # 従業員か否か
     is_staff = models.BooleanField(
-        verbose_name=_('staff status'),
+        verbose_name=_('スタッフ権限'),
         default=False,
     )
     # 活動中か否か
     is_active = models.BooleanField(
-        verbose_name=_('active'),
+        verbose_name=_('活動中'),
         default=True,
     )
     # 作成日時
     created_at = models.DateTimeField(
-        verbose_name=_("created_at"),
+        verbose_name=_("作成日"),
         auto_now_add=True
     )
     # 更新日時
     updated_at = models.DateTimeField(
-        verbose_name=_("updateded_at"),
+        verbose_name=_("更新日"),
         auto_now=True
     )
 

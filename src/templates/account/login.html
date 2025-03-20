@@ -1,3 +1,4 @@
+<!-- ヘッダーの読み込み -->
 {% extends 'header.html' %}
 
 {% block title %}
@@ -14,8 +15,8 @@
     <br>
     {% endfor %}
     <div class="mt-3">
-        <button type="submit" class="btn btn-primary">Login</button>
-        <a href="{% url 'account:shop' %}" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-primary">ログイン</button>
+        <a href="{% url 'account:shop' %}" class="btn btn-secondary">戻る</a>
     </div>
 </form>
 {% endblock %}

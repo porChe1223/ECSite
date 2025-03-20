@@ -6,10 +6,10 @@ class Product(models.Model):
     """""""""""""""""""""""""""
     商品に関する情報を扱うクラス
     """""""""""""""""""""""""""
-    # メタデータ（追加情報）
+    # メタデータ（全体情報）
     class Meta:
         verbose_name = '商品'
-        verbose_name_plural = '商品一覧'
+        verbose_name_plural = '商品'
     # 画像
     image = models.ImageField(
         verbose_name = '画像',
