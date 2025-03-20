@@ -130,8 +130,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # アップロードファイルのURL
 MEDIA_URL = '/media/'
 
-# 静的ファイルのディレクトリ
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+# 静的ファイルの配置ディレクトリ
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 # 静的ファイルのURL
 STATIC_URL = '/static/'
 

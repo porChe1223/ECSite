@@ -7,10 +7,6 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h3 class="h2">ようこそ {{ user.first_name }} {{ user.last_name }} さん</h3>
-<a href="{% url 'account:logout' %}" class="btn btn-primary">ログアウト</a>
-{% else %}
-<a href="{% url 'account:signup' %}" class="btn btn-primary">サインアップ</a>
-<a href="{% url 'account:login' %}" class="btn btn-primary">ログイン</a>
 {% endif %}
 <div class="container mt-4">
     <div class="row">
