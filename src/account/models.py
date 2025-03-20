@@ -13,19 +13,19 @@ class UserManager(BaseUserManager):
     """""""""""""""""""""""
     ユーザー管理を扱うクラス
     """""""""""""""""""""""
-    def _create_user(self, email, account_id, password, **extra_fields):
+    def _create_user(self, email, password, **extra_fields):
         """""""""""""""""""""""
         ユーザー作成の共通部分
         """""""""""""""""""""""
         email = self.normalize_email(email)
-        user = self.model(email = email, account_id = account_id, **extra_fields)
+        user = self.model(email = email, **extra_fields)
         user.set_password(password)
         user.save(using = self._db)
 
         return user
     
     
-    def create_user(self, email, account_id, password=None, **extra_fields):
+    def create_user(self, email, password=None, **extra_fields):
         """""""""""""""""
         一般ユーザー作成
         """""""""""""""""
@@ -34,13 +34,12 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(
             email=email,
-            account_id=account_id,
             password=password,
             **extra_fields,
         )
     
 
-    def create_superuser(self, email, account_id, password, **extra_fields):
+    def create_superuser(self, email, password, **extra_fields):
         """""""""""""""""""""""""""""""""""""""
         スーパーユーザー（管理者 + 従業員）作成
         """""""""""""""""""""""""""""""""""""""
@@ -49,7 +48,6 @@ class UserManager(BaseUserManager):
         extra_fields['is_superuser'] = True
         return self._create_user(
             email=email,
-            account_id=account_id,
             password=password,
             **extra_fields,
         )
@@ -59,13 +57,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     """""""""""""""""""""
     ユーザ情報を扱うクラス
     """""""""""""""""""""
-    # アカウントID
-    account_id = models.CharField(
-        verbose_name=_("account_id"),
-        unique=True,
-        max_length=10,
-        null = False
-    )
     # メールアドレス
     email = models.EmailField(
         verbose_name=_("email"),
@@ -120,10 +111,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'account_id' # ログイン時、ユーザー名の代わりにaccount_idを使用
+    USERNAME_FIELD = 'email' # ログイン時、ユーザー名の代わりにemailを使用
     # スーパーユーザー作成時に設定する要素
-    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'birth_date']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'birth_date']
 
     # 管理サイトでアカウントID確認
     def __str__(self):
-        return self.account_id
+        return self.email

@@ -21,7 +21,7 @@ SECRET_KEY = 'django-insecure-_s!1z1^4fp4tgl#=joqlu-!^mh=17lita0)1wuolsq9&7!^h!e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,12 +125,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-# アップロードされたファイル
+# アップロードファイルのディレクトリ
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# アップロードファイルのURL
 MEDIA_URL = '/media/'
 
-# 静的ファイルフォルダ
+# 静的ファイルのディレクトリ
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# 静的ファイルのURL
 STATIC_URL = '/static/'
 
 # Default primary key field type

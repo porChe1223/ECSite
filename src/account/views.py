@@ -24,10 +24,10 @@ class SignupView(CreateView):
     def form_valid(self, form):
         # ユーザー作成後にそのままログイン状態にする設定
         response = super().form_valid(form)
-        account_id = form.cleaned_data.get("account_id")
+        email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password1")
         user = authenticate(
-                 account_id = account_id,
+                 email = email,
                  password = password
                )
         login(self.request, user)
