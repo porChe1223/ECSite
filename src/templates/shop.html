@@ -18,8 +18,12 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description|truncatewords:20 }}</p>
                     <p class="card-text">価格: {{ product.price }}円</p>
-                    <a href="{% url 'shop/product_detail' product.pk %}" class="btn btn-primary">詳細を見る</a>
-                    <button class="btn btn-outline-danger">お気に入り</button>
+                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary">詳細を見る</a>
+                    <form method="post" action="{% url 'add_to_cart' product.pk %}">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" value="1" min="1">
+                        <button type="submit">カートに追加</button>
+                    </form>
                 </div>
             </div>
         </div>

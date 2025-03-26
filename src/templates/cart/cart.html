@@ -1,0 +1,50 @@
+{% extends 'header.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+{% block title %}カートの中身{% endblock %}
+
+{% block content %}
+<main>
+  <h2>カートの中身</h2>
+  {% if cart_items %}
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>数量</th>
+        <th>単価</th>
+        <th>小計</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart_items %}
+      <tr>
+        <td>{{ item.product.name }}</td>
+        <td>
+          <form action="{% url 'update_cart' item.pk %}" method="post">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+            <button type="submit">更新</button>
+          </form>
+        </td>
+        <td>{{ item.product.price }}円</td>
+        <td>{{ item.get_total_price }}円</td>
+        <td>
+          <form action="{% url 'delete_from_cart' item.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit">削除</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="total-price">合計金額: {{ total_price }}円</p>
+  {% else %}
+  <p>カートは空です。</p>
+  {% endif %}
+  <a href="{% url 'shop' %}" class="btn btn-secondary">ショッピングに戻る</a>
+</main>
+{% endblock %}
