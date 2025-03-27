@@ -16,9 +16,9 @@
       <div class="button-container" style="display: flex; flex-direction: row;">
         <form method="post" action="{% url 'add_to_cart' product.pk %}">
           {% csrf_token %}
-          <button type="submit" class="btn btn-primary" style="margin-right: 10px">カートに追加</button>
+          <button type="submit" class="btn btn-outline-dark" style="margin-right: 10px">カートに追加</button>
         </form>
-        <a href="{% url 'show_shop' %}" class="btn btn-secondary">戻る</a>
+        <a href="{% url 'show_shop' %}" class="btn btn-outline-secondary">戻る</a>
       </div>
     </div>
   </div>

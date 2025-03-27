@@ -13,19 +13,14 @@
     {% for product in products %}
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">{{ product.description|truncatewords:20 }}</p>
-          <p class="card-text">価格: {{ product.price }}円</p>
-          <div class="button-container" style="display: flex; flex-direction: row;">
-            <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary" style="margin-right: 10px">詳細を見る</a>
-            <form method="post" action="{% url 'add_to_cart' product.pk %}">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-primary">カートに追加</button>
-            </form>
+        <a href="{% url 'product_detail' product.pk %}" class="btn btn-light" style="margin-right: 10px">
+          <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body text-start">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+            <p class="card-text">¥{{ product.price }}円</p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
     {% empty %}
