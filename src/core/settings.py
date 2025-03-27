@@ -111,6 +111,7 @@ AUTH_USER_MODEL = "account.User" # カスタムユーザーを認証用ユーザ
 # ログイン関連遷移ページ
 LOGIN_REDIRECT_URL = "account:shop"
 LOGOUT_REDIRECT_URL = "account:login"
+LOGIN_URL = "account:login"
 
 
 # Internationalization

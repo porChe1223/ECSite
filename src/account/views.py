@@ -1,5 +1,6 @@
 # Django
 from django.contrib.auth import login, authenticate
+from django.shortcuts import redirect
 from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as BaseLogoutView
 from django.urls import reverse_lazy
@@ -31,6 +32,12 @@ class SignupView(CreateView):
                  password = password
                )
         login(self.request, user)
+
+        # セッション保存用のnextパラメータがあるか確認
+        next_url = self.request.POST.get("next")
+        if next_url:
+            return redirect(next_url)
+        
         return response
     
 

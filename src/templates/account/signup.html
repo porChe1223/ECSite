@@ -28,7 +28,7 @@
         {% endif %}
   
         {% if field.errors %}
-                <div class="text-danger">{{ field.errors }}</div>
+        <div class="text-danger">{{ field.errors }}</div>
         {% endif %}
       </div>
       {% endfor %}
@@ -40,6 +40,8 @@
   
       <div class="d-grid gap-2">
         <button type="submit" class="btn btn-outline-dark">サインアップ</button>
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <a href="{% url 'account:login' %}" class="btn btn-outline-primary">登録済みの方</a>
         <a href="{% url 'account:shop' %}" class="btn btn-outline-secondary">戻る</a>
       </div>
     </form>
