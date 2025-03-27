@@ -8,6 +8,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.shop, name='shop'),
-    path('<int:pk>/', views.product_detail, name='product_detail'),
+    path('', views.show_shop, name='show_shop'),                    # 商品一覧
+    path('<int:pk>/', views.product_detail, name='product_detail'), # 商品詳細
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

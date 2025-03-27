@@ -6,14 +6,14 @@ from .models import Cart
 
 
 @login_required
-def cart(request):
+def show_cart(request):
   """""""""""""""""""""""""""""""""""""""""""""
   ユーザに関するCartクラスの全データをHTMLに送信
   """""""""""""""""""""""""""""""""""""""""""""
   cart_items = Cart.objects.filter(user=request.user)
   total_price = sum(item.get_total_price() for item in cart_items)
   
-  return render(request, 'cart/cart.html', {
+  return render(request, 'cart/show_cart.html', {
      'cart_items': cart_items,
      'total_price': total_price
   })
@@ -37,7 +37,7 @@ def add_to_cart(request, pk):
       cart_item.quantity += quantity
       cart_item.save()
   
-  return redirect('cart')
+  return redirect('show_cart')
 
 
 @login_required
@@ -49,7 +49,7 @@ def delete_from_cart(request, pk):
     cart_item = get_object_or_404(Cart, pk=pk, user=request.user)
     cart_item.delete()
 
-    return redirect('cart')
+    return redirect('show_cart')
 
 
 @login_required
@@ -67,4 +67,4 @@ def update_cart(request, pk):
     else:
         cart_item.delete()
 
-    return redirect('cart')
+    return redirect('show_cart')
