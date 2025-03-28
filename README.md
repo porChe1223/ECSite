@@ -71,3 +71,7 @@ MySQL を使用。
 - 退出  
   mysql>  
    `exit`
+
+### ER 図
+
+![alt text](er_image.png)
