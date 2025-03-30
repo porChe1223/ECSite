@@ -13,7 +13,7 @@ def show_cart(request):
     ユーザに関するCartクラスの全データをHTMLに送信
     """""""""""""""""""""""""""""""""""""""""""""
     cart = Cart.objects.filter(user=request.user).first()
-    cart_items = cart.cart_item.all() if cart else []  # related_name に合わせる
+    cart_items = cart.cart_cartItem.all() if cart else []  # related_name に合わせる
     total_price = sum(item.get_total_price() for item in cart_items)
     
     return render(request, 'cart/show_cart.html', {
@@ -44,7 +44,7 @@ def add_to_cart(request, pk):
     product = get_object_or_404(Product, pk=pk)
     quantity = int(request.POST.get('quantity', 1))
     cart, _ = Cart.objects.get_or_create(user=request.user)
-    cart_item, created = cart.cart_item.get_or_create(
+    cart_item, created = cart.cart_cartItem.get_or_create(
         product=product,
         defaults={'quantity': quantity}
     )
@@ -67,7 +67,7 @@ def add_to_cart_after_logined(request):
         quantity = cart_data['quantity']
         product = get_object_or_404(Product, pk=product_id)
         cart, _ = Cart.objects.get_or_create(user=request.user)
-        cart_item, created = cart.cart_item.get_or_create(
+        cart_item, created = cart.cart_cartItem.get_or_create(
             product=product,
             defaults={'quantity': quantity}
         )
@@ -90,7 +90,7 @@ def delete_from_cart(request, pk):
         cart__user=request.user  # カートのuserを通してアクセス
     )
     cart_item.delete()
-    
+
     return redirect('show_cart')
 
 
@@ -101,7 +101,7 @@ def update_cart(request, pk):
     Cartクラスの更新をHTMLに送信
     """""""""""""""""""""""""""""
     cart = get_object_or_404(Cart, user=request.user)
-    cart_item = get_object_or_404(cart.cart_item.model, pk=pk, cart=cart)
+    cart_item = get_object_or_404(cart.cart_cartItem.model, pk=pk, cart=cart)
     quantity = int(request.POST.get('quantity', 1))
 
     if quantity > 0:

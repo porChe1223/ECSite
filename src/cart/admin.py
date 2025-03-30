@@ -5,10 +5,14 @@ from .models import Cart, CartItem
 
 class CartItemInline(admin.TabularInline):
     model = CartItem
-    extra = 0  # 余分な空のフォームを表示しない
+    extra = 0
+    readonly_fields = ('product', 'quantity', 'created_at')
+    can_delete = False
 
 class CartAdmin(admin.ModelAdmin):
     inlines = [CartItemInline]
-    list_display = ('user', 'created_at', 'get_total_price')
+    display = 'user'
+    list_filter = ('created_at', 'updated_at')
+    search_fields = ('user__email',)
 
 admin.site.register(Cart, CartAdmin)

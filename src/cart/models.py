@@ -31,10 +31,7 @@ class Cart(models.Model):
         auto_now=True
     )
 
-    # カート全体の合計金額（各CartItemの小計の合計）
-    def get_total_price(self):
-        return sum(item.get_total_price() for item in self.cart_item.all())
-
+    # 管理サイトでカート確認
     def __str__(self):
         return f"[ID: {self.user_id}] {self.user.email}のカート"
 
@@ -55,7 +52,7 @@ class CartItem(models.Model):
       Cart,
       verbose_name='カート',
       on_delete=models.CASCADE,
-      related_name='cart_item'
+      related_name='cart_cartItem'
     )
     # 商品
     product = models.ForeignKey(

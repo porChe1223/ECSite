@@ -7,6 +7,7 @@
 {% block content %}
 <main>
   <h2>カートの中身</h2>
+
   {% if cart_items %}
   <table class="cart-table">
     <thead>
@@ -25,8 +26,9 @@
         <td>
           <form action="{% url 'update_cart' item.pk %}" method="post">
             {% csrf_token %}
-            <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
-            <button type="submit" class="btn btn-outline-dark">更新</button>
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1"
+              class="form-control form-control-sm me-2" style="width: 70px;">
+            <button type="submit" class="btn btn-sm btn-outline-dark">更新</button>
           </form>
         </td>
         <td>{{ item.product.price }}円</td>
@@ -34,17 +36,26 @@
         <td>
           <form action="{% url 'delete_from_cart' item.pk %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-outline-secondary">削除</button>
+            <button type="submit" class="btn btn-sm btn-outline-secondary">削除</button>
           </form>
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
-  <p class="total-price">合計金額: {{ total_price }}円</p>
+
+  <p class="total-price mt-4">合計金額: <strong>{{ total_price }}円</strong></p>
+
+  <!-- 注文に進むボタン -->
+  <div class="mt-4">
+    <a href="{% url 'make_order' %}" class="btn btn-success">注文に進む</a>
+    <a href="{% url 'show_shop' %}" class="btn btn-outline-secondary ms-2">ショッピングに戻る</a>
+  </div>
+
   {% else %}
   <p>カートは空です。</p>
-  {% endif %}
   <a href="{% url 'show_shop' %}" class="btn btn-outline-secondary">ショッピングに戻る</a>
+  {% endif %}
+
 </main>
 {% endblock %}

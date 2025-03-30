@@ -13,7 +13,7 @@
 
 ## DB（Ecommerce）
 
-MySQL を使用。
+MySQL を使用。ECSite
 
 ### コマンド
 
