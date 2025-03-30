@@ -76,4 +76,4 @@ class Order(models.Model):
 
     # 管理サイトで注文情報確認
     def __str__(self):
-        return f"≪{self.status}≫  [ID: {self.user_id}]  {self.user.email}: {self.postal_code} {self.address} ({self.get_payment_way_display()})"
+        return f"≪{self.get_status_display()}≫  [ID: {self.user_id}]  {self.user.email}: {self.postal_code} {self.address} ({self.get_payment_way_display()})"

@@ -1,3 +1,6 @@
+# Django
 from django.contrib import admin
+# Cartモデル
+from .models import Order
 
-# Register your models here.
+admin.site.register(Order) # Cartモデルを登録
