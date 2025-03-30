@@ -40,7 +40,7 @@ class Order(models.Model):
     # 郵便番号
     postal_code = models.CharField(
         verbose_name='郵便番号',
-        max_length=8,
+        max_length=7,
         blank=False
     )
     # 住所

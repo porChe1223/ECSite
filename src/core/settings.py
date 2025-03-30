@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'account',               # accountアプリ
     'shop.apps.ShopConfig',  # shopアプリ
     'cart',                  # cartアプリ
+    'order',                 # orderアプリ
 ]
 
 MIDDLEWARE = [
