@@ -40,11 +40,11 @@ class Cart(models.Model):
         auto_now=True
     )
 
-    # 管理サイトでカート確認
-    def __str__(self):
-        return f"{self.user.email}: {self.product.name} x {self.quantity} -> {self.get_total_price()}円"
-    
     # カート内の商品小計（価格 x 数量）
     def get_total_price(self):
         return self.product.price * self.quantity
+
+    # 管理サイトでカート確認
+    def __str__(self):
+        return f"[ID: {self.user_id}]  {self.user.email}: {self.product.name} x {self.quantity} -> {self.get_total_price()}円"
     

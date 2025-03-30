@@ -10,11 +10,6 @@ class Product(models.Model):
     class Meta:
         verbose_name = '商品'
         verbose_name_plural = '商品'
-    # 画像
-    image = models.ImageField(
-        verbose_name = '画像',
-        upload_to = 'image/'
-    )
     # 名前
     name = models.CharField(
         verbose_name = '名前',
@@ -27,8 +22,14 @@ class Product(models.Model):
     price = models.IntegerField(
         verbose_name = '価格'
     )
+    # 説明
     description = models.TextField(
         verbose_name = '説明'
+    )
+    # 画像
+    image = models.ImageField(
+        verbose_name = '画像',
+        upload_to = 'image/'
     )
 
     # 管理サイトで商品名確認
