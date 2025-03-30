@@ -35,7 +35,7 @@ class Order(models.Model):
       'account.User',
       verbose_name='ユーザー',
       on_delete=models.CASCADE,
-      related_name='cart'
+      related_name='order'
     )
     # 郵便番号
     postal_code = models.CharField(
