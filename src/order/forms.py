@@ -1,11 +1,10 @@
 # Django
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 # Userモデル
 from .models import Order
 
 
-class OrderForm(UserCreationForm):
+class OrderForm(forms.ModelForm):
     """""""""""""""""
     注文フォーム
     """""""""""""""""
