@@ -12,7 +12,16 @@ class Order(models.Model):
         """""""""""""""""""""""""""""
         verbose_name = "注文状況"
         verbose_name_plural = "注文"
-    
+
+
+    class PaymentWay(models.TextChoices):
+        """""""""""
+        支払方法
+        """""""""""
+        CASH_ON_DELIVERY = '代金引換', '代金引換'
+        BANK_TRANSFER = '銀行振込', '銀行振込'
+        CREDIT_CARD = 'クレジットカード', 'クレジットカード'
+
     class Status(models.IntegerChoices):
         """""""""""""""""""""
         出荷・取引完了情報
@@ -20,14 +29,6 @@ class Order(models.Model):
         NOT_SHIPPED = 0, '未出荷'
         SHIPPED = 1, '出荷済み'
         COMPLETED = 2, '取引完了'
-
-    class PaymentWay(models.TextChoices):
-        """""""""""
-        支払方法
-        """""""""""
-        CASH_ON_DELIVERY = '代金引換'
-        BANK_TRANSFER = '銀行振込'
-        CREDIT_CARD = 'クレジットカード'
       
     
     # ユーザー
@@ -50,8 +51,9 @@ class Order(models.Model):
         blank=False
     )
     # 支払方法
-    payment_way = models.IntegerField(
+    payment_way = models.CharField(
         verbose_name='支払方法',
+        max_length=8,
         choices=PaymentWay.choices,
         default=PaymentWay.CASH_ON_DELIVERY,
     )
