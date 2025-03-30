@@ -36,7 +36,7 @@ class Order(models.Model):
       'account.User',
       verbose_name='ユーザー',
       on_delete=models.CASCADE,
-      related_name='order'
+      related_name='cart_order'
     )
     # 郵便番号
     postal_code = models.CharField(
@@ -76,4 +76,47 @@ class Order(models.Model):
 
     # 管理サイトで注文情報確認
     def __str__(self):
-        return f"≪{self.get_status_display()}≫  [ID: {self.user_id}]  {self.user.email}: {self.postal_code} {self.address} ({self.get_payment_way_display()})"
+        return f"≪{self.get_status_display()}≫  [ID: {self.user_id}]  {self.user.email}の注文"
+
+
+class OrderItem(models.Model):
+    """""""""""""""""""""""""""""""""""
+    注文内の商品情報を扱うクラス
+    """""""""""""""""""""""""""""""""""
+    class Meta:
+        """""""""""""""""""""""""""""
+        メタデータ（データの名称）
+        """""""""""""""""""""""""""""
+        verbose_name = "注文アイテム"
+        verbose_name_plural = "注文アイテム"
+    
+    # 注文
+    order = models.ForeignKey(
+      Order,
+      verbose_name='注文',
+      on_delete=models.CASCADE,
+      related_name='order_orderItem'
+    )
+    product = models.ForeignKey(
+        'shop.Product',
+        verbose_name='商品',
+        on_delete=models.PROTECT  # 注文後に商品削除されても履歴は残す
+    )
+    product_name = models.CharField(
+        verbose_name='商品名',
+        max_length=255
+    )
+    price = models.PositiveIntegerField(
+        verbose_name='価格'
+    )
+    quantity = models.PositiveIntegerField(
+        verbose_name='数量'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def get_total_price(self):
+        return self.price * self.quantity
+
+    def __str__(self):
+        return f"{self.product_name} x {self.quantity} -> {self.get_total_price()}円"
