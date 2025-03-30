@@ -6,10 +6,13 @@ class Cart(models.Model):
     """""""""""""""""""""""
     カート情報を扱うクラス
     """""""""""""""""""""""
-    # メタデータ（全体情報）
     class Meta:
-      verbose_name = "カート"
-      verbose_name_plural = "カート"
+        """""""""""""""""""""""""""""
+        メタデータ（データの名称）
+        """""""""""""""""""""""""""""
+        verbose_name = "カート"
+        verbose_name_plural = "カート"
+      
     # ユーザー
     user = models.ForeignKey(
       'account.User',

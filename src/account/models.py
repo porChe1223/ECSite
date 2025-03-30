@@ -57,10 +57,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     """""""""""""""""""""
     ユーザ情報を扱うクラス
     """""""""""""""""""""
-    # メタデータ（全体情報）
     class Meta:
+        """""""""""""""""""""""""""""
+        メタデータ（データの名称）
+        """""""""""""""""""""""""""""
         verbose_name = 'ユーザー'
         verbose_name_plural = 'ユーザー'
+    
     # メールアドレス
     email = models.EmailField(
         verbose_name=_("メールアドレス"),
