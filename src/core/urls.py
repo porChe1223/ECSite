@@ -11,4 +11,5 @@ urlpatterns = [
     path('', include('shop.urls')),     # shopアプリ
     path('', include('account.urls')),  # accountアプリ
     path('', include('cart.urls')),     # cartアプリ
+    path('', include('order.urls')),    # orderアプリ
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

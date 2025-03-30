@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import OrderForm
-from .models import Order
 
 
 @login_required
-def order_view(request):
+def make_order(request):
     """""""""""""""""
     注文ビュー
     """""""""""""""""
@@ -18,7 +17,7 @@ def order_view(request):
             return redirect('order_success')
     else:
         form = OrderForm()
-    return render(request, 'order/order.html', {'form': form})
+    return render(request, 'order/make_order.html', {'form': form})
 
 
 @login_required

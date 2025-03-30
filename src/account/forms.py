@@ -13,10 +13,6 @@ class SignUpForm(UserCreationForm):
     """""""""""""""""""""
     ユーザ作成フォーム
     """""""""""""""""""""
-    birth_date = forms.DateField( # 誕生日はカレンダーウィジェットで選択
-        widget=forms.DateInput(attrs={"type": "date", "class": "form-control"})
-    )
-
     class Meta:
         model = User
         fields = (
@@ -25,6 +21,9 @@ class SignUpForm(UserCreationForm):
             "last_name",
             "birth_date",
         )
+        widgets = {
+            'birth_date': forms.DateInput(attrs={"type": "date", "class": "form-control"})
+        }
 
     # フロント整形
     def __init__(self, *args, **kwargs):
