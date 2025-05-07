@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # フロントエンド
+    'rest_framework', # 通信用
+    'frontend',
     # 自作アプリ
     'account',               # accountアプリ
     'shop.apps.ShopConfig',  # shopアプリ
